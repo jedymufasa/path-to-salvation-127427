@@ -1,7 +1,7 @@
 import { getTract, getSalvationSteps } from '$lib/api';
+import type { PageLoad } from './$types';
 
-/** @type {import('./$types').PageServerLoad} */
-export async function load() {
+export const load: PageLoad = async () => {
 	try {
 		// Fetch data in parallel
 		const [tractSections, salvationSteps] = await Promise.all([
@@ -21,4 +21,4 @@ export async function load() {
 			salvationSteps: []
 		};
 	}
-}
+};
