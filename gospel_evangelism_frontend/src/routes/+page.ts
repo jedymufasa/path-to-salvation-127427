@@ -1,3 +1,24 @@
-// since there's no dynamic data here, we can prerender
-// it so that it gets served as a static asset in production
-export const prerender = true;
+import { getTract, getSalvationSteps } from '$lib/api';
+
+/** @type {import('./$types').PageServerLoad} */
+export async function load() {
+	try {
+		// Fetch data in parallel
+		const [tractSections, salvationSteps] = await Promise.all([
+			getTract(),
+			getSalvationSteps()
+		]);
+
+		return {
+			tractSections,
+			salvationSteps
+		};
+	} catch (error) {
+		console.error('Failed to load page data:', error);
+		// Return empty arrays on failure so the page can still render
+		return {
+			tractSections: [],
+			salvationSteps: []
+		};
+	}
+}

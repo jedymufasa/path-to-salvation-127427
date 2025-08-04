@@ -1,134 +1,100 @@
-@import '@fontsource/fira-mono';
+:root {
+	/* Color Scheme */
+	--color-primary: #006400;    /* Dark Green */
+	--color-secondary: #FFD700; /* Gold */
+	--color-accent: #FF4500;      /* OrangeRed */
+	--color-text: #333333;
+	--color-bg: #fdfdfd;
+	--color-light-gray: #f0f0f0;
 
-:root,
-.theme-light {
-	--font-body:
-		Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-		'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-mono: 'Fira Mono', monospace;
-	--color-bg-0: rgb(202, 216, 228);
-	--color-bg-1: hsl(209, 36%, 86%);
-	--color-bg-2: hsl(224, 44%, 95%);
-	--color-theme-1: #ff3e00;
-	--color-theme-2: #4075a6;
-	--color-text: rgba(0, 0, 0, 0.7);
-	--column-width: 42rem;
-	--column-margin-top: 4rem;
-	font-family: var(--font-body);
-	color: var(--color-text);
-}
-
-.theme-dark {
-	--color-bg-0: #10151a;
-	--color-bg-1: #18202b;
-	--color-bg-2: #222c39;
-	--color-theme-1: #ff4081;
-	--color-theme-2: #93c0ff;
-	--color-text: #f4f4f4;
-	background-color: var(--color-bg-1);
-}
-
-body.theme-dark {
-	background-attachment: fixed;
-	background-color: var(--color-bg-1);
-	background-size: 100vw 100vh;
-	background-image:
-		radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 100%),
-		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
-}
-
-body.theme-light {
-	background-attachment: fixed;
-	background-color: var(--color-bg-1);
-	background-size: 100vw 100vh;
-	background-image:
-		radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 100%),
-		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
+	/* Typography */
+	--font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	
+	/* Layout */
+	--content-width: 70rem;
+	--border-radius: 8px;
 }
 
 body {
-	min-height: 100vh;
+	font-family: var(--font-body);
+	background-color: var(--color-bg);
+	color: var(--color-text);
 	margin: 0;
-	background-attachment: fixed;
-	background-color: var(--color-bg-1);
-	background-size: 100vw 100vh;
-	background-image:
-		radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%),
-		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
+	line-height: 1.6;
 }
 
-h1,
-h2,
-p {
-	font-weight: 400;
+main {
+	padding: 1rem;
+	margin: 0 auto;
+	width: 100%;
+	max-width: var(--content-width);
+	box-sizing: border-box;
 }
 
-p {
-	line-height: 1.5;
-}
-
-a {
-	color: var(--color-theme-1);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
+h1, h2, h3 {
+	color: var(--color-primary);
+	font-weight: 600;
 }
 
 h1 {
-	font-size: 2rem;
+	font-size: 2.5rem;
 	text-align: center;
+	margin-bottom: 2rem;
 }
 
 h2 {
-	font-size: 1rem;
+	font-size: 2rem;
+	border-bottom: 2px solid var(--color-light-gray);
+	padding-bottom: 0.5rem;
+	margin-top: 3rem;
 }
 
-pre {
-	font-size: 16px;
-	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
-	border-radius: 3px;
-	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-	padding: 0.5em;
-	overflow-x: auto;
-	color: var(--color-text);
+h3 {
+	font-size: 1.5rem;
+	color: var(--color-accent);
 }
 
-.text-column {
-	display: flex;
-	max-width: 48rem;
-	flex: 0.6;
-	flex-direction: column;
-	justify-content: center;
-	margin: 0 auto;
+a {
+	color: var(--color-accent);
 }
 
-input,
 button {
-	font-size: inherit;
-	font-family: inherit;
+	background-color: var(--color-accent);
+	color: white;
+	border: none;
+	padding: 0.8rem 1.5rem;
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 600;
+	transition: background-color 0.3s ease;
 }
 
-button:focus:not(:focus-visible) {
-	outline: none;
+button:hover {
+	opacity: 0.9;
 }
 
-@media (min-width: 720px) {
+button.secondary {
+    background-color: var(--color-primary);
+}
+
+button.secondary:hover {
+    opacity: 0.9;
+}
+
+section {
+	margin-bottom: 3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
 	h1 {
-		font-size: 2.4rem;
+		font-size: 2rem;
 	}
-}
-
-.visually-hidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	white-space: nowrap;
+	h2 {
+		font-size: 1.75rem;
+	}
+	h3 {
+		font-size: 1.25rem;
+	}
 }
